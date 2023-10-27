@@ -9,3 +9,7 @@ for litera in zdanie:
             histogram[litera]+=1
         else:
             histogram[litera]=1
+
+print("Histogram częstości występowania liter: ")
+for litera, licznik in histogram.items():
+    print(f"{litera}: {licznik}")
