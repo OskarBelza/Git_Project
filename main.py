@@ -12,7 +12,7 @@ def histogram():
 
 def advance_histogram(sentence, letters_to_count):
     letter_histogram = {}
-
+    sentence = sentence.replace(" ", "").lower()
     for char in sentence:
         if char.isalpha() and char in letters_to_count:
             if char not in letter_histogram:
