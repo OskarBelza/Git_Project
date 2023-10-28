@@ -59,7 +59,7 @@ while True:
             letters_to_count = input("Podaj litery do zliczania (oddzielone przecinkami): ").split(',')
             histogram = advance_histogram(text, letters_to_count)
             for letter, counter in histogram.items():
-                print(f"{dupa}: {counter}")
+                print(f"{letter}: {counter}")
     elif choice == "3":
         break
     else:
