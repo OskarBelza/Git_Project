@@ -1,17 +1,4 @@
-
 import requests
-
-
-def creating_histogram(answer):
-    histogram = {}
-    for letter in answer:
-        if letter.isalpha():
-            letter.lower()
-            if letter in histogram:
-                histogram[letter] += 1
-            else:
-                histogram[letter] = 1
-    return histogram
 
 
 def text_source():
@@ -33,31 +20,17 @@ def text_source():
         return None
 
 
-while True:
-    print("1 - Generuj histogram \n2 - Wyjście")
-    choice = input("WYbierz opcje: ")
-    if choice == "1":
-        text = text_source()
-        if text:
-            histogram = creating_histogram(text)
-            for letter, counter in histogram.items():
-                print(f"{letter}: {counter}")
-    elif choice == "2":
-        break
-    else:
-        print("Niepoprawny wybor")
-        
-def histogram():
+def histogram(text):
     histogram = {}
-    tekst = input("Wprowadź tekst: ")
-
-    for litera in tekst:
-        if litera.isalpha():
-            litera = litera.lower()
-            if litera in histogram:
-                histogram[litera] += 1
+    for letter in text:
+        if letter.isalpha():
+            letter = letter.lower()
+            if letter in histogram:
+                histogram[letter] += 1
             else:
-                histogram[litera] = 1
+                histogram[letter] = 1
+    return histogram
+
 
 def advance_histogram(sentence, letters_to_count):
     letter_histogram = {}
@@ -70,11 +43,30 @@ def advance_histogram(sentence, letters_to_count):
                 letter_histogram[char] += 1
     return letter_histogram
 
-user_input = input("Wprowadź ciąg znaków: ")
 
-letters_to_count = input("Podaj litery do zliczania (oddzielone przecinkami): ").split(',')
+while True:
+    print("1 - Generuj histogram \n2 - Generuj zaawansowany histogram\n3 - Wyjście")
+    choice = input("WYbierz opcje: ")
+    if choice == "1":
+        text = text_source()
+        if text:
+            histogram = histogram(text)
+            for letter, counter in histogram.items():
+                print(f"{letter}: {counter}")
+    elif choice == "2":
+        text = text_source()
+        if text:
+            letters_to_count = input("Podaj litery do zliczania (oddzielone przecinkami): ").split(',')
+            histogram = advance_histogram(text, letters_to_count)
+            for letter, counter in histogram.items():
+                print(f"{dupa}: {counter}")
+    elif choice == "3":
+        break
+    else:
+        print("Niepoprawny wybor")
+        
 
-histogram = advance_histogram(user_input, letters_to_count)
-for letter, count in histogram.items():
-    print(f"{letter}: {count}")
+
+
+
 
